@@ -12,7 +12,7 @@ public abstract class Animals {
     ArrayList<String> commands = new ArrayList<>();
     LocalDate birthday;
 
-    static List<Animals> animalsList = new ArrayList<>();
+    public static List<Animals> animalsList = new ArrayList<>();
 
     public Animals(int id, String name, int bDay, int bMonth, int bYear, boolean isPet,
                    String type_animal, ArrayList<String> commands) {
@@ -31,6 +31,10 @@ public abstract class Animals {
 
     public int getId() {
         return id;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public boolean isPet() {
@@ -87,84 +91,11 @@ public abstract class Animals {
 
     public static void setAnimalData() {
         int lastAnimal = animalsList.size() - 1;
-        System.out.println(animalsList.get(lastAnimal));
         animalsList.get(lastAnimal).setID(animalsList);
         animalsList.get(lastAnimal).setName();
         animalsList.get(lastAnimal).setBirthday();
-        System.out.println("____________________________");
-        System.out.println(animalsList.get(lastAnimal));
     }
 
-    //    public static void createAnimal(){
-//        Scanner scanner = new Scanner(System.in);
-//        int idAnimal, typeAnimal;
-//        int[] bitrhdayAnimal = new int[3];
-//        ArrayList<String> commands = new ArrayList<>();
-//        String nameAnimal;
-//        System.out.println("Для добавления нового питомца, необходимо заполнить анкету.\n");
-//        System.out.println("Укажите тип питомца:\n" +
-//                "Dogs - 1\n" +
-//                "Cats - 2\n" +
-//                "Hamsters - 3\n" +
-//                "Hourses - 4\n" +
-//                "Donkeys - 5\n" +
-//                "Camels - 6\n" +
-//                "Для отмены - 0");
-//        System.out.println(">>> ");
-//        typeAnimal = scanner.nextInt();
-//        switch (typeAnimal){
-//            case(1):
-//                idAnimal = setID(animalsList);
-//                nameAnimal = setName();
-//                bitrhdayAnimal = setBirthday();
-//                Animals dog = new Dogs(idAnimal,nameAnimal,bitrhdayAnimal[0],bitrhdayAnimal[1],bitrhdayAnimal[2],commands);
-//                animalsList.add(dog);
-//                break;
-//            case(2):
-//                idAnimal = setID(animalsList);
-//                nameAnimal = setName();
-//                bitrhdayAnimal = setBirthday();
-//                Animals cat = new Cats(idAnimal,nameAnimal,bitrhdayAnimal[0],bitrhdayAnimal[1],bitrhdayAnimal[2],commands);
-//                animalsList.add(cat);
-//                break;
-//            case(3):
-//                idAnimal = setID(animalsList);
-//                nameAnimal = setName();
-//                bitrhdayAnimal = setBirthday();
-//                Animals hamster = new Hamsters(idAnimal,nameAnimal,bitrhdayAnimal[0],bitrhdayAnimal[1],bitrhdayAnimal[2],commands);
-//                animalsList.add(hamster);
-//                break;
-//            case(4):
-//                idAnimal = setID(animalsList);
-//                nameAnimal = setName();
-//                bitrhdayAnimal = setBirthday();
-//                Animals hourse = new Hourses(idAnimal,nameAnimal,bitrhdayAnimal[0],bitrhdayAnimal[1],bitrhdayAnimal[2],commands);
-//                animalsList.add(hourse);
-//                break;
-//            case(5):
-//                idAnimal = setID(animalsList);
-//                nameAnimal = setName();
-//                bitrhdayAnimal = setBirthday();
-//                Animals donkey = new Donkeys(idAnimal,nameAnimal,bitrhdayAnimal[0],bitrhdayAnimal[1],bitrhdayAnimal[2],commands);
-//                animalsList.add(donkey);
-//                break;
-//            case(6):
-//                idAnimal = setID(animalsList);
-//                nameAnimal = setName();
-//                bitrhdayAnimal = setBirthday();
-//                Animals camel = new Camels(idAnimal,nameAnimal,bitrhdayAnimal[0],bitrhdayAnimal[1],bitrhdayAnimal[2],commands);
-//                animalsList.add(camel);
-//                break;
-//        }
-//    }
-//        protected String setName() {
-//        Scanner scanner = new Scanner(System.in);
-//        String result;
-//            System.out.println("Введите имя питомца: ");
-//            System.out.println(">>> ");
-//            result = scanner.next();
-//            return result;
-//        }
     protected void setName() {
         String res;
         Scanner scanner = new Scanner(System.in);
@@ -173,7 +104,6 @@ public abstract class Animals {
         res = scanner.next();
         this.name = res;
     }
-
 
     protected void setBirthday() {
         Scanner scanner = new Scanner(System.in);
@@ -198,4 +128,5 @@ public abstract class Animals {
             this.id = list.size();
         }
     }
+
 }

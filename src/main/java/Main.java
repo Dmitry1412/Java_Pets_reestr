@@ -1,16 +1,27 @@
 import Animals.Animals;
 import Animals.PetsCommands;
 import Animals.Dogs;
+import Controller.CtrlFunc;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
+        String a,b;
+        a = "qwerty";
+        b = "qwe";
+        if (a.contains(b)) System.out.println(1);
+            else System.out.println(0);
+
+        //CtrlFunc.showPets();
         //Introduction();
 //        Animals.createAnimal();
 //        Animals.setAnimalData();
+//        Animals.showPets();
+//        //showCommands();
     }
 
 public static void Control(){
@@ -20,7 +31,7 @@ while(quit != 0){
 }
     System.out.println("Работа программы завершена");
 }
-    public static void Introduction(){
+    public static void introduction(){
         System.out.println("Добро пожаловать в приют животных");
         System.out.println("в программе реализован следующий функционал:");
         System.out.println("1. Добавить новое животное \n" +
@@ -36,3 +47,4 @@ while(quit != 0){
         else System.out.println("False");
     }
 }
+
