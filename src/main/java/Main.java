@@ -7,27 +7,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         //Introduction();
-//Animals dog1 = new Dogs(1, "Rex", 5, 8, 2019, null);
-//        System.out.println(dog1);
-//
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Для добавления нового питомца, необходимо заполнить анкету.\n");
-        System.out.println("Укажите тип питомца:\n" +
-                "Dogs - 1\n" +
-                "Cats - 2\n" +
-                "Hamsters - 3\n" +
-                "Hourses - 4\n" +
-                "Donkeys - 5\n" +
-                "Camels - 6\n" +
-                "Для отмены - 0");
-        int typePet = scanner.nextInt();
-        if (typePet == 1){
-            Dogs d = d.createAnimal();
-        }
+//        Animals.createAnimal();
+//        Animals.setAnimalData();
     }
 
+public static void Control(){
+        int quit = 1;
+while(quit != 0){
 
+}
+    System.out.println("Работа программы завершена");
+}
     public static void Introduction(){
         System.out.println("Добро пожаловать в приют животных");
         System.out.println("в программе реализован следующий функционал:");
