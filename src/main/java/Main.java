@@ -2,7 +2,7 @@ import Animals.Animals;
 import Animals.PetsCommands;
 import Animals.Dogs;
 import Controller.CtrlFunc;
-
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,18 +10,20 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        String a,b;
-        a = "qwerty";
-        b = "qwe";
-        if (a.contains(b)) System.out.println(1);
-            else System.out.println(0);
 
         //CtrlFunc.showPets();
         //Introduction();
 //        Animals.createAnimal();
 //        Animals.setAnimalData();
-//        Animals.showPets();
-//        //showCommands();
+//
+////
+////        Animals.createAnimal();
+////        Animals.setAnimalData();
+////
+//        CtrlFunc.showPets();
+//        System.out.println(Animals.animalsList.get(0).printCommands());
+
+//        CtrlFunc.showCommands();
     }
 
 public static void Control(){

@@ -1,7 +1,10 @@
 package Animals;
 
+import Controller.CtrlFunc;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,6 +30,10 @@ public abstract class Animals {
     @Override
     public String toString() {
         return ("id: " + id + " " + type_animal + " " + name + " Дата рождения: " + birthday);
+    }
+
+    public String printCommands(){
+        return commands.toString();
     }
 
     public int getId() {
@@ -94,6 +101,7 @@ public abstract class Animals {
         animalsList.get(lastAnimal).setID(animalsList);
         animalsList.get(lastAnimal).setName();
         animalsList.get(lastAnimal).setBirthday();
+        animalsList.get(lastAnimal).studyPet();
     }
 
     protected void setName() {
@@ -121,11 +129,46 @@ public abstract class Animals {
     }
 
     protected void setID(List<Animals> list) {
-        int result = 0;
-        if (list.isEmpty()) {
-            this.id = 0;
+        int result = 1;
+        if (list.size()==1) {
+            this.id = 1;
         } else {
-            this.id = list.size();
+            for (Animals a: list) {
+                  if (a.id > result) result = a.id;
+            }
+            this.id = result + 1;
+        }
+    }
+
+    protected void studyPet(){
+        Scanner scanner = new Scanner(System.in);
+        String userAnswer;
+        int numberOfCommand;
+        System.out.println("Ваш питомец обучен командам или вы хотели бы его обучить?\n" +
+                "y/n\n" +
+                ">>> ");
+        userAnswer = scanner.next();
+        if (userAnswer.equalsIgnoreCase("y")){
+            CtrlFunc.showCommands();
+            System.out.println("Введите команды, которые знает/хочет узнать ваш питомец \n" +
+                    "для выхода/отмены нажмите 0\n" +
+                    ">>> ");
+            userAnswer = scanner.next();
+            numberOfCommand = CtrlFunc.valueOf(userAnswer);
+            while (numberOfCommand != 0){
+                if (numberOfCommand > 8 || numberOfCommand < 1) {
+                    System.out.println("Введите номер команды от 1 до 8");
+                    userAnswer = scanner.next();
+                    numberOfCommand = CtrlFunc.valueOf(userAnswer);
+                }
+                else{
+                    userAnswer = PetsCommands.Взять.getcommand(numberOfCommand);
+                    this.commands.add(userAnswer);
+                    userAnswer = scanner.next();
+                    numberOfCommand = CtrlFunc.valueOf(userAnswer);
+                }
+
+            }
         }
     }
 

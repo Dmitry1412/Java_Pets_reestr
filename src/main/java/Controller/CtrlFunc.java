@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import static Animals.Animals.animalsList;
+import static java.lang.Integer.parseInt;
 
 public class CtrlFunc {
     /**
@@ -23,7 +24,12 @@ public class CtrlFunc {
      */
     public static void showCommands() {
         System.out.println("Доступные команды: ");
-        Arrays.stream(PetsCommands.values()).toList().forEach(n -> System.out.println(n.toString()));
+//        Arrays.stream(PetsCommands.values()).toList().forEach(n -> System.out.println(n.toString()));
+        int i =1;
+        for (PetsCommands e: PetsCommands.values()) {
+            System.out.printf("%d %s%n",i, e.toString());
+            i++;
+        }
     }
 
     public static ArrayList<Animals> findAnimal() {
@@ -61,4 +67,5 @@ public class CtrlFunc {
         }
         return res;
     }
+    public static Integer valueOf(String s) throws NumberFormatException { return parseInt(s); }
 }
