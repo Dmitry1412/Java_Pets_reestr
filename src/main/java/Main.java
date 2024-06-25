@@ -11,6 +11,21 @@ public class Main {
     public static void main(String[] args) {
 
 
+        String url = "jdbc:mysql://localhost:3306/human_friends";
+        String user = "root";
+        String password = "qqasew";
+
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM animals");
+
+            while (rs.next()) {
+                System.out.println(rs.getInt("id") + " " + rs.getString("name_animal"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
         //CtrlFunc.showPets();
         //Introduction();
 //        Animals.createAnimal();
