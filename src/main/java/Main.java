@@ -16,22 +16,6 @@ public class Main {
 
       CtrlFunc.Control();
 
-
-
-        //CtrlFunc.showPets();
-        //Introduction();
-//        Animals.createAnimal();
-//        Animals.setAnimalData();
-
-//
-////
-////        Animals.createAnimal();
-////        Animals.setAnimalData();
-////
-//        CtrlFunc.showPets();
-//        System.out.println(Animals.animalsList.get(0).printCommands());
-
-//        CtrlFunc.showCommands();
     }
 }
 
