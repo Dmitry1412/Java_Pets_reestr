@@ -1,0 +1,21 @@
+touch pack_animals
+cat pets
+далее CTRL+D для выхода
+nano pets
+заполняем список домашних животных и нажимаем CTRL+X и Enter
+аналогично для файла pack_animals
+cat pets pack_animals
+cat pets pack_animals
+cat animals
+mv animals people_friends
+mkdir pets_dir
+mv people_friends pets_dir
+sudo apt install mysql-server
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+Загрузка ключа репозитория
+sudo sh -c 'echo deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main >> /etc/apt/sources.list.d/google-chrome.list'
+Добавление репозитория
+sudo apt-get update
+sudo apt-get install google-chrome-stable
+sudo apt remove gcc-12-base:amd64
+sudo apt purge
