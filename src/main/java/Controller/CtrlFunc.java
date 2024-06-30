@@ -2,9 +2,11 @@ package Controller;
 
 import Animals.Animals;
 import Animals.PetsCommands;
+import MySQL.MySQL;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import static Animals.Animals.animalsList;
@@ -25,9 +27,9 @@ public class CtrlFunc {
     public static void showCommands() {
         System.out.println("Доступные команды: ");
 //        Arrays.stream(PetsCommands.values()).toList().forEach(n -> System.out.println(n.toString()));
-        int i =1;
-        for (PetsCommands e: PetsCommands.values()) {
-            System.out.printf("%d %s%n",i, e.toString());
+        int i = 1;
+        for (PetsCommands e : PetsCommands.values()) {
+            System.out.printf("%d %s%n", i, e.toString());
             i++;
         }
     }
@@ -57,8 +59,8 @@ public class CtrlFunc {
             System.out.println("Введите имя питомца\n" +
                     ">>> ");
             nameAnimal = scanner.next();
-            for (Animals an: animalsList) {
-                if (an.getName().contains(nameAnimal)){
+            for (Animals an : animalsList) {
+                if (an.getName().contains(nameAnimal)) {
                     res.add(an);
                 }
             }
@@ -67,5 +69,121 @@ public class CtrlFunc {
         }
         return res;
     }
-    public static Integer valueOf(String s) throws NumberFormatException { return parseInt(s); }
+
+    public static Integer valueOf(String s) throws NumberFormatException {
+        return parseInt(s);
+    }
+
+    private static void introduction() {
+        System.out.println("Добро пожаловать в приют животных");
+    }
+
+    private static int selectOperation() {
+        int res;
+        System.out.println("в программе реализован следующий функционал:");
+        System.out.println("1. Вывести список всех животных\n" +
+                "2. Добавить новое животное \n" +
+                "3. Внести изменения в основную информацию о животном \n" +
+                "4. Работа с обучением питомца");
+        System.out.println("Введите номер нужной операции или 0 для отмены");
+        System.out.println(">>>");
+        Scanner scanner = new Scanner(System.in);
+        res = scanner.nextInt();
+        return res;
+    }
+
+    public static void Control() {
+        introduction();
+        int selector = 1;
+        while (selector != 0) {
+            selector = selectOperation();
+            switch (selector) {
+                case 1:
+                    MySQL.getAnimalsInfo();
+                    pressAnyKey();
+                    break;
+                case 2:
+                    MySQL.addAnimalToDB(Animals.setAnimalData(Animals.createAnimal()));
+                    System.out.println("Питомец добавлен");
+                    break;
+                case 3:
+                    MySQL.changePet();
+                    System.out.println("Информация о питомце обновлена");
+                    break;
+                case 4:
+                    MySQL.showAnimalCom();
+                    System.out.println("Данные обновлены");
+                    break;
+                default:
+                    System.out.println("____");
+            }
+
+        }
+        System.out.println("Работа программы завершена!");
+    }
+
+    private static void pressAnyKey() {
+        String pressAnyKey;
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.println("Для продолжения нажмите любую клавишу \n" +
+                    ">>> ");
+            pressAnyKey = scanner.next();
+        } while (pressAnyKey == null);
+    }
+
+    public static String stadyPetToSQL() {
+        String res;
+        List<String> commands = new ArrayList<>();
+        int numberOfCommand;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Доступные команды: ");
+        CtrlFunc.showCommands();
+        System.out.println("Введите команды, которым хотите обучить \n" +
+                "для выхода/отмены нажмите 0\n" +
+                ">>> ");
+        numberOfCommand = scanner.nextInt();
+        while (numberOfCommand != 0) {
+            if (numberOfCommand > 8 || numberOfCommand < 1) {
+                System.out.println("Введите номер команды от 1 до 8");
+                numberOfCommand = scanner.nextInt();
+            } else {
+                res = PetsCommands.Взять.getcommand(numberOfCommand);
+                commands.add(res);
+                numberOfCommand = scanner.nextInt();
+            }
+        }
+        return commands.toString();
+    }
 }
+
+
+//    Scanner scanner = new Scanner(System.in);
+//    String userAnswer;
+//    int numberOfCommand;
+//        System.out.println("Ваш питомец обучен командам или вы хотели бы его обучить?\n" +
+//                "y/n\n" +
+//                ">>> ");
+//                userAnswer = scanner.next();
+//                if (userAnswer.equalsIgnoreCase("y")){
+//                CtrlFunc.showCommands();
+//                System.out.println("Введите команды, которые знает/хочет узнать ваш питомец \n" +
+//                "для выхода/отмены нажмите 0\n" +
+//                ">>> ");
+//                userAnswer = scanner.next();
+//                numberOfCommand = CtrlFunc.valueOf(userAnswer);
+//                while (numberOfCommand != 0){
+//                if (numberOfCommand > 8 || numberOfCommand < 1) {
+//        System.out.println("Введите номер команды от 1 до 8");
+//        userAnswer = scanner.next();
+//        numberOfCommand = CtrlFunc.valueOf(userAnswer);
+//        }
+//        else{
+//        userAnswer = PetsCommands.Взять.getcommand(numberOfCommand);
+//        this.commands.add(userAnswer);
+//        userAnswer = scanner.next();
+//        numberOfCommand = CtrlFunc.valueOf(userAnswer);
+//        }
+//
+//        }
+//        }

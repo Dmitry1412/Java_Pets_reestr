@@ -40,6 +40,14 @@ public abstract class Animals {
         return id;
     }
 
+    public int[] getBirthday(){
+        int[] res = new int[3];
+        res[0] = bDay;
+        res[1] = bMonth;
+        res[2] = bYear;
+        return res;
+    }
+
     public String getName(){
         return name;
     }
@@ -48,11 +56,13 @@ public abstract class Animals {
         return isPet;
     }
 
+    public String getCommands(){return commands.toString(); }
     public String getType_animal() {
         return type_animal;
     }
 
-    public static void createAnimal() {
+    public static Animals createAnimal() {
+        Animals animals = null;
         Scanner scanner = new Scanner(System.in);
         int typeAnimal;
         System.out.println("Для добавления нового питомца, необходимо заполнить анкету.\n");
@@ -68,40 +78,47 @@ public abstract class Animals {
         typeAnimal = scanner.nextInt();
         switch (typeAnimal) {
             case (1):
-                Dogs dogs = new Dogs();
-                animalsList.add(dogs);
+                animals = new Dogs();
+                //animalsList.add(dogs);
                 break;
             case (2):
-                Cats cats = new Cats();
-                animalsList.add(cats);
+                animals = new Cats();
+                //animalsList.add(cats);
                 break;
             case (3):
-                Hamsters hamsters = new Hamsters();
-                animalsList.add(hamsters);
+                animals = new Hamsters();
+                //animalsList.add(hamsters);
                 break;
             case (4):
-                Hourses hourses = new Hourses();
-                animalsList.add(hourses);
+                animals = new Hourses();
+                //animalsList.add(hourses);
                 break;
             case (5):
-                Donkeys donkeys = new Donkeys();
-                animalsList.add(donkeys);
+                animals = new Donkeys();
+                //animalsList.add(donkeys);
                 break;
             case (6):
-                Camels camels = new Camels();
-                animalsList.add(camels);
+                animals = new Camels();
+                //animalsList.add(camels);
                 break;
             default:
                 System.out.println("Вы не ввели число от 1 до 6");
         }
+        return animals;
     }
 
-    public static void setAnimalData() {
-        int lastAnimal = animalsList.size() - 1;
-        animalsList.get(lastAnimal).setID(animalsList);
-        animalsList.get(lastAnimal).setName();
-        animalsList.get(lastAnimal).setBirthday();
-        animalsList.get(lastAnimal).studyPet();
+    public static Animals setAnimalData(Animals animals) {
+        animals.id = 1;
+        animals.setName();
+        animals.setBirthday();
+        animals.studyPet();
+
+        //        int lastAnimal = animalsList.size() - 1;
+//        animalsList.get(lastAnimal).setID(animalsList);
+//        animalsList.get(lastAnimal).setName();
+//        animalsList.get(lastAnimal).setBirthday();
+//        animalsList.get(lastAnimal).studyPet();
+    return animals;
     }
 
     protected void setName() {
